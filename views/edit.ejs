@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+  <h1 class="display-4 fw-bold text-body-emphasis">Record Thoughts.</h1>
+  </div>
+  <div class="container">
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4 text-center">When it is time to share...</p>
+      </div>
+    </div>
+
+<form action="/edit" method="POST">
+  <input name="title" type="text" class="feedback-input" placeholder="Title" value="<%=title%>" required />
+  <input name="date" type="text" class="feedback-input" placeholder="Date" value="<%=date%>" required />
+  <textarea name="body" class="feedback-input" placeholder="Blog" required ><%=body%></textarea>
+  <input type="hidden" name="id" value="<%=id%>" />
+   <input type="submit" value="SUBMIT" />
+</form>
+
+<%- include("partials/footer.ejs") %>

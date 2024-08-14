@@ -1,0 +1,46 @@
+
+<%- include("partials/header.ejs") %>
+
+
+
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold text-body-emphasis">Welcome!</h1>
+</div>
+<div class="container">
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4 text-center">When there is time to learn something new....</p>
+  </div>
+</div>
+ 
+<div class="container">
+  <div class="row">
+    <h2 class="col border-bottom">Recent Posts</h2>
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+        <img class="img-fluid" src="/images/blogNotebookGreyBubbles.png" alt="blank personal notebook" />
+    </div>
+
+    <div class ="col d-inline-flex">
+        <ul>
+          <% posts.forEach((post) => { %>
+              <li>
+                <div class="row">
+                <h2 class="d-inline-flex">
+                  <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                  <img  src="/images/chat-square-heart.svg" alt="heart in speech bubble" height="30">
+                </div> <%=post.title%></h2> 
+                </div>
+                  <p class="date"><%=post.date%></p>
+                  <p><%=post.body.substring(0,100) + "..."%>
+                    <a href="longPost/<%= post.id %>">Read More</a></p>
+              </li>
+          <%});%>
+      </ul>
+  </div>
+
+</div>
+
+<%- include("partials/footer.ejs") %>

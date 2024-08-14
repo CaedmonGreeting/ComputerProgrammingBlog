@@ -1,0 +1,73 @@
+<%- include("partials/header.ejs") %>
+
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+<h1 class="display-4 fw-bold text-body-emphasis">Edit and Delete.</h1>
+</div>
+<div class="container">
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4 text-center">When it is time for a change....</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h2 class="col border-bottom">Blog Post List</h2>
+    </div>
+
+    <div class="row">
+
+      <ul>
+        <% posts.forEach((post) => { %>
+             <li>
+            
+          <div class="col d-inline-flex">
+              <a type="button" class="btn btn-outline-primary" href="/edit/<%=post.id%>">EDIT</a></div>
+                
+            <!-- Button trigger modal -->
+            <div class="col d-inline-flex">
+              <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#runModal<%=post.id%>" >
+                  DELETE</a></div>
+                
+            <!-- Modal -->
+             <div class="modal fade" id="runModal<%=post.id%>" tabindex="-1" aria-labelledby="runModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+               <div class="modal-content">
+                      
+                <div class="modal-header">
+                    <h5 class="modal-title" id="runModalLabel">Delete Post</h5>
+                       <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                      
+                            <div class="modal-body container">
+                              <div class="row">
+                                <div class="col">Are you sure that you want to delete this post?</div>
+                              </div>                              
+                            </div>
+                      
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                              <a type="button" class="btn btn-danger" href="/delete/<%=post.id%>">YES</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div> 
+                                              
+                   <div class="col d-inline-flex">
+                    <h2 ><%=post.title%></h2> 
+                    </div>
+                    <div class="col d-inline-flex">
+                    <p class="date"><%=post.date%></p>
+                    <p><%=post.body.substring(0,100) + "..."%>
+                      <a href="longPost/<%= post.id %>">Read More</a></p>
+                 </div>
+                      
+                  </li>
+             <%});%>
+            </ul>
+        
+    </div>
+
+
+<%- include("partials/footer.ejs") %>
